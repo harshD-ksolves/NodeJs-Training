@@ -1,0 +1,46 @@
+[
+    {
+        "name":"Harsh",
+        "number":1234567890,
+        "email":"abcd@xyz.com"    
+    },
+
+    {
+        "name":"abcd",
+        "number":9876543210,
+        "email":"xyz@abcd.com",
+        "favourite_places":[
+            "Pune",
+            "Solapur",
+            "Rajgad"
+        ]
+
+    },
+    {
+        "name":"wxyz",
+        
+        "set of objects":[
+            {
+                "name":"pqr",
+                "favourite_movies":[
+                    {
+                        "name":"KGF2",
+                        "year of release":2022
+                    },
+                    {
+                        "name":"Baahubali: The Beginning",
+                        "year":2015
+                    },
+                    {
+                        "name":"The Godfather",
+                        "year":1972
+                    },
+                    {
+                        "name":"The Shawshank Redemption",
+                        "year":"1994"
+                    }
+                ]
+            }
+        ]
+    }
+]
