@@ -1,16 +1,16 @@
 const {writeFile,readFile,readFileSync, appendFile, truncate}=require('fs');
 
 let lenData=0;// length of data in the file.
-const filename='./simple.json';
+
 
 /**
  * Function to write or replace content in the file.
  * @param {*} data to be write or replace data in the file.  
  */
-const writeOrReplaceFunction= async(data)=>{
+const writeOrReplaceFunction= (filename,data)=>{
     
     
-   writeFile(filename, data, (err) => {
+  writeFile(filename, data, (err) => {
         if (err) {
             console.log("writeOrReplace:- " + err);
             return;
@@ -25,8 +25,8 @@ const writeOrReplaceFunction= async(data)=>{
 /**
 * function to read data from the file.
 */
-const readData= async()=>{
-    readFile(filename, 'utf8', (err, res) => {
+const readData= (filename)=>{
+   readFile(filename, 'utf8', (err, res) => {
         if (err) {
             console.log("read:- " + err);
             return;
@@ -43,8 +43,8 @@ const readData= async()=>{
  * Function to append or add given data at the end of file.
  * @param {*} data  to append or add at the end of file.
  */
-const appendData= async (data)=>{
-  appendFile(filename, data, (err) => {
+const appendData= (filename,data)=>{
+    appendFile(filename, data, (err) => {
 
         if (err) {
             console.log("append:- " + err);
@@ -60,8 +60,8 @@ const appendData= async (data)=>{
 /**
  * FUnction to clear all file data from the file.
  */
-const deleteAllData=async ()=>{
-   truncate(filename, lenData, (err) => {
+const deleteAllData= (filename)=>{
+    truncate(filename, lenData, (err) => {
         if (err) {
             console.log("Delete:- " + err);
             return;
@@ -74,22 +74,9 @@ const deleteAllData=async ()=>{
 }
 
 
-let obj0={
-    id:0,
-    name:"Harshvardhan",
-    mobile:0987654321,
-    email:"Abcd@xyz.com"
+module.exports={
+    writeOrReplaceFunction,
+    readData,
+    appendData,
+    deleteAllData
 }
-
-
-writeOrReplaceFunction(JSON.stringify(obj0));
-
-deleteAllData();
-
-let obj1={...obj0};
-obj1.id=1;
-obj1.name="New name";
-
-appendData(JSON.stringify([obj1,obj0]));
-
-readData();
