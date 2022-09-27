@@ -70,4 +70,5 @@ Promise.all(arr).then((res)=>{
 })
 .catch(e=>console.log(e))
 .finally(()=>console.log("Finally"));
-    
+  
+module.exports={promise1,arr};
