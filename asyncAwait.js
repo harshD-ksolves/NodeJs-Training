@@ -27,7 +27,7 @@ let promise1 = new Promise((resolve, reject) => {
         } 
         , t)
   });
-const f=async ()=>{
+const fun=async ()=>{
     console.log("Before promise1");
 
     //Try and catch block to handle the error thrown by reject method.
@@ -46,4 +46,36 @@ const f=async ()=>{
         console.log("error caused by reject method:- "+error)
     }
 }
-f();
+
+fun();
+
+//Chaining promise with async/await.
+
+const tenRaisedTo=(i)=>{
+    let p=new Promise((resolve, reject)=>{
+        if(typeof(i) != "number"){
+            reject(`${i} is not a number`);
+        }
+        else{
+            resolve(i**10);
+        }
+    });
+    return p;
+}
+
+const asyncFun=async ()=>{
+    let r=10;
+    let res=await tenRaisedTo(r);
+    console.log("First response:- "+res);
+
+    r=20;
+    res=await tenRaisedTo(r);
+    console.log("Second response:- "+res);
+
+    r=30;
+    res=await tenRaisedTo(r);
+    console.log("Third response:- "+res);
+    return "Done";
+}
+
+asyncFun().then((r)=>console.log(r));
