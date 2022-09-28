@@ -1,6 +1,0 @@
-
- Url: /home By Method:- GET :-{"user-agent":"PostmanRuntime/7.29.2","accept":"*/*","postman-token":"0d91b89d-b090-437e-aa8d-5d93f733ccaa","host":"localhost:3000","accept-encoding":"gzip, deflate, br","connection":"keep-alive"}
- Url: /home By Method:- POST :-{"user-agent":"PostmanRuntime/7.29.2","accept":"*/*","postman-token":"b26e335d-44db-4c0f-a738-6a50a7755e53","host":"localhost:3000","accept-encoding":"gzip, deflate, br","connection":"keep-alive","content-length":"0"}
- Url: /home By Method:- PUT :-{"user-agent":"PostmanRuntime/7.29.2","accept":"*/*","postman-token":"03127a88-7625-4303-b206-ae95f0a49034","host":"localhost:3000","accept-encoding":"gzip, deflate, br","connection":"keep-alive","content-length":"0"}
- Url: /home By Method:- PATCH :-{"user-agent":"PostmanRuntime/7.29.2","accept":"*/*","postman-token":"e88f5592-b601-4504-91e4-01144eb2e8d9","host":"localhost:3000","accept-encoding":"gzip, deflate, br","connection":"keep-alive","content-length":"0"}
- Url: /home By Method:- DELETE :-{"user-agent":"PostmanRuntime/7.29.2","accept":"*/*","postman-token":"b34965c2-a176-4fb2-8dee-4d4aec983f72","host":"localhost:3000","accept-encoding":"gzip, deflate, br","connection":"keep-alive"}
