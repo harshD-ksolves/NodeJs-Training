@@ -11,9 +11,7 @@ const server=http.createServer((req,res)=>{
         
         req.on("data", chunk => {
             body.push(chunk);
-            // const d=body.toString().split("=");
-            // console.log(d);
-            // data.d[0]=d
+            
         });
         
         
