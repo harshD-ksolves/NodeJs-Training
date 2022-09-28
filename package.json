@@ -1,0 +1,25 @@
+{
+  "name": "nodejs-training-module",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"node index",
+    "dev":"nodemon index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/harshD-ksolves/NodeJs-Training.git"
+  },
+  "author": "Harshvardhan Deshmukh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/harshD-ksolves/NodeJs-Training/issues"
+  },
+  "homepage": "https://github.com/harshD-ksolves/NodeJs-Training#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "nodemon": "^2.0.20"
+  }
+}
