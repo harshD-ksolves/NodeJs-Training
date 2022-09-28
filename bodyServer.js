@@ -1,5 +1,5 @@
 const http=require('http');
-const { parse } = require('querystring');
+
 
 const hostName='localhost';
 const port = 3000;
