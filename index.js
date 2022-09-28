@@ -4,16 +4,16 @@ dotenv.config();
 const {appLog,verifyAuthHeader}=require("./middleware");
 const app = express();
 app.use(express.urlencoded({ extended: true }));
-
+app.set('view engine','pug');
 //App Logger middleware.
 app.use(appLog);//Middleware for whole app
 
 //Basic Routing
 app.get('/', (req,res)=>{
-    console.log(req.query);
+    console.log(req.query?.name);
 
     res.status=200;
-    res.send(req.query);
+    res.render('home',{title:'Harsh\'s Express', message:`Hello ${req.query?.name}`});
 });
 
 //middleware for specific path.
