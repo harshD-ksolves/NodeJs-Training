@@ -7,10 +7,12 @@ const logger = require('morgan');
 
 const db=require('./db');
 
+const authRouter=require('./routes/auth');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 //Custom Middlewares.
 const appLog=require("./middlewares/customAppLog");
+const { VerifyToken } = require('./middlewares/JWT');
 const app = express();
 dotenv.config();
 // view engine setup
@@ -31,9 +33,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-
-app.use('/home',indexRouter);
-app.use('/users', usersRouter);
+app.use('/auth',authRouter);
+app.use('/home',indexRouter);//open path
+app.use('/users',VerifyToken,usersRouter);//jwt authrized path
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -1,3 +1,4 @@
+const { VerifyTokenAndAuth } = require("../middlewares/JWT");
 const User = require("../models/User");
 const router = require("express").Router();
 
@@ -23,7 +24,7 @@ router.get("/", async (req, res, next) => {
 /**
  * GET specific user
  */
-router.get("/:id", async(req, res, next)=>{
+router.get("/:id",async(req, res, next)=>{
     try {
         const u=await User.findByPk(req.params.id);
         const {password,...user}=u.dataValues;
@@ -38,23 +39,10 @@ router.get("/:id", async(req, res, next)=>{
     }
 });
 
-//To register new user.
-router.post("/add", async(req, res) => {
-  
-  try {
 
-      const user=await User.create(req.body);
-
-      res.status = 200;
-      res.json(user);
-  } catch (error) {
-      res.status=500;
-      res.json(error);
-  }
-});
 
 //To update user
-router.put('/:id',async (req, res)=>{
+router.put('/:id',VerifyTokenAndAuth, async (req, res)=>{
   try {
     const user=await User.update(req.body,{
       where:{
@@ -74,7 +62,7 @@ router.put('/:id',async (req, res)=>{
 });
 
 //Delete specific user by id
-router.delete('/:id', async(req,res)=>{
+router.delete('/:id',VerifyTokenAndAuth, async(req,res)=>{
   try {
       const u=await User.destroy({
         where:{
