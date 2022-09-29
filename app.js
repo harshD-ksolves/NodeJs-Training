@@ -10,7 +10,7 @@ const db=require('./db');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 //Custom Middlewares.
-const {appLog,verifyAuthHeader}=require("./middleware");
+const appLog=require("./middlewares/customAppLog");
 const app = express();
 dotenv.config();
 // view engine setup
@@ -23,7 +23,7 @@ app.use(appLog);//Middleware for whole app
 
 //connecting to db.
 db.authenticate()
-.then(()=>console.log("\nDatabase connected successfuly."))
+.then(()=>console.log("Database connected successfuly."))
 .catch(err => console.log("DB connection: "+err));
 
 app.use(express.json());
@@ -31,35 +31,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-//Basic Routing
-app.get('/', (req,res)=>{
-  console.log(req.query?.name);
-
-  res.status=200;
-  res.render('index',{title:'Harsh\'s Express', message:`Hello ${req.query?.name}`});
-});
-
-//middleware for specific path.
-app.post('/',verifyAuthHeader,(req,res)=>{
-  console.log(req.body);
-
-  res.status=200;
-  res.send(req.body);
-});
-
-app.put('/:id',(req,res)=>{
-  console.log(req.params?.id);
-  
-  res.status=200;
-  res.send([req.body,req.params]);
-});
-
-app.delete("/:id",(req,res)=>{
-  console.log(req.params?.id);
-
-  res.status=200;
-  res.send(req.params);
-});
 
 app.use('/home',indexRouter);
 app.use('/users', usersRouter);

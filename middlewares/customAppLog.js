@@ -7,30 +7,12 @@ const appLog=(req,res,next)=>{
      null;
 
     const data=`${new Date()} request ${req.method} is made on ${req._parsedUrl.path} by IP:- ${ip}\n`;
-    console.log(data);
     appendFile(process.env.appLogFileName,data,(err)=>{
         if(err){
             console.log(err);
         }
-        
     });
     next();
 }
 
-const verifyAuthHeader=(req,res,next)=>{
-    const authHeader=req.headers.authorization ||null;
-    console.log(authHeader);
-    if(authHeader == null){
-        res.status=403;
-        res.send("Access Denied");
-    }
-    else{
-        console.log("Auth Header middleware passed!");
-        next();
-    }
-}
-
-module.exports={
-    appLog,
-    verifyAuthHeader
-}
+module.exports=appLog;
