@@ -5,7 +5,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
-const pool=require('./pool');
+const db=require('./db');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
@@ -18,10 +18,13 @@ app.set('views', path.join(__dirname, './views'));
 app.set('view engine', 'pug');
 
 app.use(logger('dev'));//Morgan Logger.
-
 //Custom App Logger middleware.
 app.use(appLog);//Middleware for whole app
 
+//connecting to db.
+db.authenticate()
+.then(()=>console.log("\nDatabase connected successfuly."))
+.catch(err => console.log("DB connection: "+err));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
