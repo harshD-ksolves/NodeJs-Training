@@ -17,9 +17,30 @@ const VerifyToken = (req, res, next) => {
   }
 };
 
-const VerifyTokenAndAuth = (req, res, next) => {
+const VerifyTokenAndAuth= (req, res, next) => {
   VerifyToken(req, res, () => {
-    if (req.user.id === req.params.id) {
+    if (req.user.id === req.params.id || req.user.isAdmin) {
+      next();
+    } else {
+      res.status(403).json("Your not Authorized to do that!");
+    }
+  });
+};
+
+const VerifyTokenAndAuthBooks=(req,res,next)=>{
+  VerifyToken(req,res,()=>{
+    if(req.user.id === req.params.user || req.user.isAdmin){
+      next();
+    }
+    else{
+      res.status(403).json("Your not Authorized to do that!");
+    }
+  });
+}
+
+const VerifyTokenAndAdmin = (req, res, next) => {
+  VerifyToken(req, res, () => {
+    if (req.user.isAdmin) {
       next();
     } else {
       res.status(403).json("Your not Authorized to do that!");
@@ -28,4 +49,4 @@ const VerifyTokenAndAuth = (req, res, next) => {
 };
 
 
-module.exports = { VerifyToken, VerifyTokenAndAuth};
+module.exports = { VerifyToken, VerifyTokenAndAuth, VerifyTokenAndAdmin,VerifyTokenAndAuthBooks};
